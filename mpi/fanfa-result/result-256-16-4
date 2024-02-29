@@ -1,0 +1,9 @@
+[
+{"iterazione":1,"vettore":[
+{"processo":0,"max_err":0.000107,"relative_err":0.000002,"tempo_senza_creazione":19.096606,"tempo_totale":22.396383,"flop_senza_creazione":-40013236.061105,"flop_totali":-34117875.123593},
+{"processo":2,"max_err":0.000107,"relative_err":0.000001,"tempo_senza_creazione":19.096607,"tempo_totale":22.396387,"flop_senza_creazione":-40013233.190536,"flop_totali":-34117868.947871},
+{}]},
+{"iterazione":2,"vettore":[
+{"processo":0,"max_err":0.000107,"relative_err":0.000002,"tempo_senza_creazione":20.600529,"tempo_totale":23.872258,"flop_senza_creazione":-37092105.463050,"flop_totali":-32008576.035925},
+{"processo":2,"max_err":0.000107,"relative_err":0.000001,"tempo_senza_creazione":20.600532,"tempo_totale":23.872263,"flop_senza_creazione":-37092100.133448,"flop_totali":-32008569.274134},
+{}]}]

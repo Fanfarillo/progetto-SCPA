@@ -1,0 +1,66 @@
+#!/bin/bash
+##
+## GPU submission script for PBS on CRESCENT
+## -----------------------------------------
+##
+## Follow the 5 steps below to configure. If you edit this from Windows,
+## *before* submitting via "qsub" run "dos2unix" on this file - or you will
+## get strange errors. You have been warned.
+## 
+## STEP 1:
+## The following line contains the job name:
+##
+#PBS -N cudatest
+##
+## STEP 2:
+##
+##
+#PBS -l select=1:ncpus=1:mpiprocs=1:ngpus=1
+##
+## STEP 3:
+##
+## Select correct queue:
+##
+## for this class we have a special queue
+##
+#PBS -q gpu
+##PBS -l walltime=1:00:00
+##
+## STEP 4:
+##
+## Put YOUR email address in the next line:
+##
+#PBS -M john.doe@cranfield.ac.uk
+##
+##
+##
+## DO NOT CHANGE the following lines
+##------------------------------------------------
+#PBS -j oe
+#PBS -v "CUDA_VISIBLE_DEVICES="
+#PBS -W sandbox=PRIVATE
+#PBS -V
+#PBS -m abe 
+#PBS -k n
+##
+## Change to working directory
+ln -s $PWD $PBS_O_WORKDIR/$PBS_JOBID
+cd $PBS_O_WORKDIR
+## Allocated gpu(s)
+echo CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
+##
+## Calculate number of CPUs
+cpus=`cat $PBS_NODEFILE | wc -l`
+gpus=`echo $CUDA_VISIBLE_DEVICES|awk -F"," '{print NF}'`
+##
+##
+##-------------------------------------------------
+##
+## STEP 5: 
+## 
+## Put correct parameters in mpirun execution line
+## below:
+##
+./Cuda-prod.cu
+
+/bin/rm -f $PBS_JOBID
